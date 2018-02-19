@@ -67,6 +67,7 @@
     <module>jop-impl</module>
     <module>jop-test</module>
     <module>jop-examples</module>
+    <module>jop-control-flow</module>
   </modules>
 
   <properties>
