@@ -1,45 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>cz.zcu.kiv.jop</groupId>
-    <artifactId>jop-parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <relativePath>../</relativePath>
-  </parent>
+    <parent>
+        <groupId>cz.zcu.kiv.jop</groupId>
+        <artifactId>jop-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
 
-  <artifactId>jop-control-flow</artifactId>
-  <name>Control flow for Java Objects Populator</name>
+    <artifactId>jop-control-flow</artifactId>
+    <name>Control flow for Java Objects Populator</name>
 
-  <dependencies>
-    <!-- dependency injection -->
-    <dependency>
-      <groupId>javax.inject</groupId>
-      <artifactId>javax.inject</artifactId>
-    </dependency>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/soot/soot/2.5.0 -->
+        <dependency>
+            <groupId>soot</groupId>
+            <artifactId>soot</artifactId>
+            <version>2.5.0</version>
+        </dependency>
 
-    <!-- logging -->
-    <dependency>
-      <groupId>commons-logging</groupId>
-      <artifactId>commons-logging</artifactId>
-    </dependency>
-  </dependencies>
+        <!-- https://mvnrepository.com/artifact/guru.nidi/graphviz-java -->
+        <dependency>
+            <groupId>guru.nidi</groupId>
+            <artifactId>graphviz-java</artifactId>
+            <version>0.1.0</version>
+        </dependency>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>package-resources</id>
-            <phase>prepare-package</phase>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>conjars.org</id>
+            <url>http://conjars.org/repo</url>
+        </repository>
+    </repositories>
 
 </project>
