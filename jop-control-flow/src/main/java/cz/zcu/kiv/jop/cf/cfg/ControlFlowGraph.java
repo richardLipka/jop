@@ -11,7 +11,6 @@ import soot.toolkits.graph.UnitGraph;
 import soot.util.dot.DotGraph;
 
 import java.io.File;
-import java.text.Format;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -26,9 +25,27 @@ public class ControlFlowGraph {
 
         Body b = metod.retrieveActiveBody();
 
+        System.out.println(b);
+
         this.sootMethod = metod;
         this.unitGraph = new ExceptionalUnitGraph(b);
 
+    }
+
+    public UnitGraph getUnitGraph() {
+        return unitGraph;
+    }
+
+    public void setUnitGraph(UnitGraph unitGraph) {
+        this.unitGraph = unitGraph;
+    }
+
+    public SootMethod getSootMethod() {
+        return sootMethod;
+    }
+
+    public void setSootMethod(SootMethod sootMethod) {
+        this.sootMethod = sootMethod;
     }
 
 
@@ -37,8 +54,7 @@ public class ControlFlowGraph {
         Map<Unit, Integer> mapUnit = new HashMap<Unit,Integer>();
 
         Unit u = (Unit)i.next();
-        String dot = "digraph \"callgraph\" {";
-        String node = "";
+        DotGraph dot = new DotGraph("callgraph");
 
         int j = 1;
         while (u != null) {
@@ -47,10 +63,6 @@ public class ControlFlowGraph {
             up.setIndent("");
             u.toString(up);
 
-            node =  mapUnit.get(u)+": "+String.valueOf(up.output());
-
-            dot = dot + "\n\t\"" + node.replace("\"", "\'") + "\"";
-
             for(Unit p : unitGraph.getSuccsOf(u)){
                 UnitPrinter up2 = new NormalUnitPrinter(sootMethod.getActiveBody());
                 up2.setIndent("");
@@ -58,13 +70,7 @@ public class ControlFlowGraph {
 
                 addToMap(mapUnit, p);
 
-                node =  mapUnit.get(u)+": "+String.valueOf(up.output());
-
-                dot = dot + "\n\t\"" +  node.replace("\"", "\'") + "\"->\"";
-
-                node =  mapUnit.get(p)+": "+String.valueOf(up2.output());
-
-                dot = dot +  node.replace("\"", "\'")  + "\";";
+                dot.drawEdge(mapUnit.get(u)+": "+String.valueOf(up.output()), mapUnit.get(p)+": "+String.valueOf(up2.output()));
             }
 
             System.out.println(j + ":" +up.output());
@@ -77,25 +83,23 @@ public class ControlFlowGraph {
             }
         }
 
-        dot = dot + "\n}";
-
         System.out.println(dot);
 
-        //saveGraphGraphviz(dot.toString(), "test");
+        saveGraphGraphviz(dot.toString(), "pom");
 
-        //dot.plot(name+".dot");
+        dot.plot(name+".dot");
     }
 
-    /*public static void saveGraphGraphviz(String dot, String filename){
+    public static void saveGraphGraphviz(String dot, String filename){
         try{
             MutableGraph g = Parser.read(dot);
-            Graphviz output = Graphviz.fromGraph(g).format("png");
+            Graphviz output = Graphviz.fromGraph(g);
             output.renderToFile(new File(filename));
 
         }catch (Exception e){
             System.out.println(e);
         }
-    }*/
+    }
 
 
     public static String printMetod(DotGraph dot, UnitGraph graph, Body b, String entry){

@@ -12,14 +12,15 @@ public class Main {
 
         MetodLoader metodLoader = MetodLoader.getInstance();
 
-        String classpath = "cz.zcu.kiv.jop.cf.TestingClass.TestLoop";
-        String metodName = "metod3";
+        String classpath = "cz.zcu.kiv.jop.cf.TestingClass.TestIF";
+        String metodName = "metod0";
 
         SootMethod method = metodLoader.getSootMetod(classpath, metodName);
 
         ControlFlowGraph cfg = new ControlFlowGraph(method);
+        //cfg.saveGraph("graph");
 
-        cfg.saveGraph("graph");
+        Analyze.analysing(cfg);
 
         long end = System.nanoTime();
 

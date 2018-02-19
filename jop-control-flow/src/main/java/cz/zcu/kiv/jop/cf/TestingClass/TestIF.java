@@ -4,13 +4,24 @@ package cz.zcu.kiv.jop.cf.TestingClass;
  */
 public class TestIF {
 
+
+    public int metod0(int a){
+        int out;
+
+        if(a < 123)
+            out = -55;
+        else
+            out = a;
+
+        return out;
+    }
+
     public int metod1(int a, int b){
         int out;
         if(a < b)
             out = a;
         else
             out = b;
-
 
         return out;
     }
