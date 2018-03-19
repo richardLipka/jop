@@ -6,12 +6,10 @@ public class TestIF {
 
 
     public int metod0(int a){
-        int out;
+        int out = 5;
 
-        if(a < 123)
+        if(a == 123)
             out = -55;
-        else
-            out = a;
 
         return out;
     }
@@ -93,5 +91,20 @@ public class TestIF {
 
     public int metod7(int day){
         return day = day < 5 ? 6 : 7;
+    }
+
+    public int metod8(int a, int b){
+        int out = 0;
+        if(a < b || b > 6)
+            out = a;
+
+        return out;
+    }
+
+    public char metod9(char a){
+        if(a == 'A'){
+            return 'B';
+        }
+        return 'C';
     }
 }

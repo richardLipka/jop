@@ -1,21 +1,27 @@
-package cz.zcu.kiv.jop.cf;
+package cz.zcu.kiv.jop.cf.data;
 
 import soot.Type;
+import soot.Value;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ParameterDate {
+public class ParameterInfo {
 
     Type type;
-
-    List<?> value = null;
-
+    Value sootValue;
     String name;
-
     boolean isModified;
 
-    public ParameterDate(Type type){
+    public ParameterInfo(Type type){
         this.type = type;
+    }
+    public Value getSootValue() {
+        return sootValue;
+    }
+
+    public void setSootValue(Value sootValue) {
+        this.sootValue = sootValue;
     }
 
     public Type getType() {
@@ -24,14 +30,6 @@ public class ParameterDate {
 
     public void setType(Type type) {
         this.type = type;
-    }
-
-    public List<?> getValue() {
-        return value;
-    }
-
-    public void setValue(List<?> value) {
-        this.value = value;
     }
 
     public String getName() {

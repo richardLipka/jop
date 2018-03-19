@@ -85,7 +85,7 @@ public class ControlFlowGraph {
 
         System.out.println(dot);
 
-        saveGraphGraphviz(dot.toString(), "pom");
+        //saveGraphGraphviz(dot.toString(), "pom");
 
         dot.plot(name+".dot");
     }

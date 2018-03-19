@@ -43,7 +43,7 @@ public class MetodLoader {
         System.out.println("current dir =   " + dir);
 
         Options.v().set_whole_program(true);
-        Options.v().set_verbose(true);
+        //Options.v().set_verbose(true);
         Options.v().set_allow_phantom_refs(true);
         Options.v().set_output_format(Options.output_format_jimple);
         //Options.v().set_soot_classpath(Scene.v().defaultClassPath() + dir);
